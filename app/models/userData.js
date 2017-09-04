@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var address = new Schema({
-	_id: Schema.ObjectId
+	_id: Schema.ObjectId,
 	name:  String,
 	main: {
 		type: String,
 		number: Number,
 		name: String
-	}
+	},
 	complement: [{
 		type: String,
 		number: Number,
@@ -17,7 +17,7 @@ var address = new Schema({
 });
 
 var user = new Schema({
-	_id: Schema.ObjectId
+	_id: Schema.ObjectId,
 	name:  String,
 	lastName: String,
 	userName: String,
