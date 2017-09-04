@@ -1,0 +1,31 @@
+{
+    "name": "breakfest",
+    "version": "0.0.1",
+    "description": "breakfast request plataform",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.13.3",
+      "mongoose": "^4.13.3"
+    },
+    "engines": {
+      "node": "6.11.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/sergiovillagran/breakfast"
+    },
+    "keywords": [
+      "node",
+      "breakfast",
+      "request plataform",
+      "tracking plataform"
+    ],
+    "author": "Sergio Villagran",
+    "contributors": [
+      ""
+    ],
+    "license": "MIT"
+}
