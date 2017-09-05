@@ -1,6 +1,6 @@
 var express             = require('express');
-var router              = express().router();
-var productController   = require('./controllers/MCproduct.js');
+var router              = express.Router();
+var productController   = require('../controllers/MCproduct.js');
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 router.route('/product')
     .post(doPost)
@@ -8,7 +8,7 @@ router.route('/product')
     .put(doPut)
     .delete(doDelete);
 
-module.exports(router);
+module.exports = router;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 function doPost(req, res)
 {
