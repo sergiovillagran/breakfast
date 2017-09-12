@@ -14,8 +14,8 @@ server.use(function (req, res, next){
     next();
 });
 
-//server.use(bodyParser.urlencoded({extended: false}));
-//server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({extended: false}));
+server.use(bodyParser.json());
 
 server.use('/api', prodRouter);
 

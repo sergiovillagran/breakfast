@@ -7,6 +7,12 @@ router.route('/product')
     .get(doGet)
     .put(doPut)
     .delete(doDelete);
+
+router.route('/product/:id')
+    .get(doGetById)
+    .put(doPut)
+    .delete(doDelete);
+    
 module.exports = router;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 function doPost(req, res)
@@ -36,9 +42,9 @@ function doGet(req, res)
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 function doPut(req, res)
 {
-    var id      = req.param.id;
+    var id      = req.params.id;
     var product = req.body;
-    
+
     productController.update(id, product, function (err, updateRes){
         if(err)
             res.status(500).jsonp(err);
@@ -49,10 +55,21 @@ function doPut(req, res)
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 function doDelete(req, res)
 {
-    var id      = req.param.id;
-    var product = req.body;
+    var id      = req.params.id;
     
     productController.remove(id, function (err, removeRes){
+        if(err)
+            res.status(500).jsonp(err);
+        else
+            res.status(200).jsonp(removeRes);
+    });
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+function doGetById(req, res)
+{
+    var id = req.params.id;
+    
+    productController.getById(id, function (err, removeRes){
         if(err)
             res.status(500).jsonp(err);
         else

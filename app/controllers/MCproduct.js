@@ -1,12 +1,17 @@
-var product = require('./../models/productData.js');
+var Product = require('./../models/productData.js');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ObjectIdSchema = Schema.ObjectId;
+var ObjectId = mongoose.Types.ObjectId;
 //----------------------------------------------------------------------------------------------------------------------------
 exports.create = function (name, cost, description, subProducts, callback)
 {
 	if(!name || !cost)
 		return callback({message: ""});
 	else
-		var product = new productSchema({
-			name:  name,
+		var product = new Product({
+            _id: new ObjectId(),
+            name:  name,
 			cost: cost,
 			description: description,
 			subProducts: subProducts
@@ -20,7 +25,7 @@ exports.create = function (name, cost, description, subProducts, callback)
 //----------------------------------------------------------------------------------------------------------------------------
 exports.listAll = function (callback)
 {
-    product.find({}, callback ? callback : function(err, productList){
+    Product.find({}, callback ? callback : function(err, productList){
         if(err)
             return null;
         else
@@ -30,7 +35,7 @@ exports.listAll = function (callback)
 //----------------------------------------------------------------------------------------------------------------------------
 exports.getById = function (id, callback)
 {
-    product.find({_id: id}, callback ? callback : function(err, prod){
+    Product.findById(id, callback ? callback : function(err, prod){
         if(err)
             return null;
         else
@@ -40,7 +45,7 @@ exports.getById = function (id, callback)
 //----------------------------------------------------------------------------------------------------------------------------
 exports.update = function (id, newestRow, callback)
 {
-    product.update({_id: id}, { $set: newestRow}, callback ? callback : function(err, updateRes){
+    Product.update({_id: id}, { $set: newestRow}, callback ? callback : function(err, updateRes){
         if(err)
             return null;
         else
@@ -50,7 +55,7 @@ exports.update = function (id, newestRow, callback)
 //----------------------------------------------------------------------------------------------------------------------------
 exports.remove = function (id, callback)
 {
-    product.remove({_id: id}, { $set: newestRow}, callback ? callback : function(err, removeRes){
+    Product.remove({_id: id}, callback ? callback : function(err, removeRes){
         if(err)
             return null;
         else

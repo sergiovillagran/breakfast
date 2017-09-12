@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var product = new Schema({
-	_id: Schema.ObjectId,
+	_id: Schema.Types.ObjectId,
 	name:  String,
 	cost: Number,
 	description: String,
