@@ -7,7 +7,6 @@ router.route('/product')
     .get(doGet)
     .put(doPut)
     .delete(doDelete);
-
 module.exports = router;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 function doPost(req, res)
@@ -48,7 +47,8 @@ function doPut(req, res)
     });
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
-function doDelete(req, res){
+function doDelete(req, res)
+{
     var id      = req.param.id;
     var product = req.body;
     
